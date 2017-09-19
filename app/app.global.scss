@@ -46,6 +46,8 @@ table {
 
 /*----------------------------------FONT--*/
 
+@import "~font-awesome/css/font-awesome.css";
+
 @mixin font-size($sizeValue: 1.6) {
 	font-size: ($sizeValue * 10) + px;
 	font-size: $sizeValue + rem;
@@ -61,4 +63,292 @@ h1 {
 
 h2 {
   @include font-size(1.6);
+}
+
+/*-----------------------------------PASSING-HEIGHT--*/
+
+body, html, #root, #root > div {
+  width: 100%;
+  height: 100%;
+}
+
+#root > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/*---------------------------------COLORS--*/
+
+$header-background: #825540;
+$header-foreground: #A46A4F;
+$light-grey: #f4f4f4;
+$dark-grey: #e2e2e2;
+$darker-grey: #B3B3B3;
+
+$block-light: #c6e48b;
+$block-medium: #7bc96f;
+$block-dark: #239a3b;
+
+/*---------------------------------HIDE-SCROLLBARS--*/
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/*---------------------------------HEADER--*/
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  min-height: 80px;
+  color: #fff;
+  background-color: $header-background;
+
+  &-links a {
+
+    padding: 20px 40px;
+    height: 100%;
+    margin: 2px;
+    background-color: $header-background;
+    text-decoration: none;
+    @include font-size(1.4);
+    color: $darker-grey;
+
+    &:hover {
+      color: #fff;
+    }
+
+    &.active {
+      color: #fff;
+      cursor: default;
+      background-color: $header-foreground;
+    }
+  }
+}
+
+/*--------------------------------------HOME--*/
+
+.home {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+
+/*---------------------------------DAYBLOCK--*/
+
+.dayblock {
+  &-wrapper {
+    width: calc(100% / 7);
+    height: 80px;
+    box-sizing: border-box;
+    padding: 7px;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  background-color: $dark-grey;
+  border: 2px solid transparent;
+
+  &.hidden {
+    display: none;
+  }
+
+  &.light {
+    background-color: $block-light;
+  }
+
+  &.medium {
+    background-color: $block-medium;
+    color: #fff;
+  }
+
+  &.dark {
+    background-color: $block-dark;
+    color: #fff;
+  }
+
+  &.upcoming {
+    background-color: transparent;
+    border: 2px dashed $dark-grey;
+  }
+
+}
+
+/*---------------------------------MONTH-VIEW---*/
+
+.month-view {
+
+  &-wrapper {
+    width: 55%;
+    align-self: center;
+  }
+
+	&-table {
+		display: flex;
+		flex-wrap: wrap;
+    padding: 20px 10%;
+
+    &-head {
+      width: calc(100% / 7);
+      box-sizing: border-box;
+      padding: 7px;
+      text-align: center;
+      font-weight: bold;
+    }
+	}
+
+	&-controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &-text {
+      cursor: pointer;
+      padding: 10px;
+      min-width: 200px;
+      transition: background-color 0.15s;
+      &:hover {
+        background-color: $light-grey;
+      }
+      &:active {
+        background-color: $dark-grey;
+      }
+		}
+
+    &-arrow {
+      padding: 8px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      &:hover {
+        background-color: $light-grey;
+      }
+      &:active {
+        background-color: $dark-grey;
+      }
+    }
+
+	}
+}
+
+/*------------------------------------SIDEBAR--*/
+
+.sidebar {
+
+    &-wrapper {
+      width: 45%;
+    }
+
+    height: 100%;
+    display: flex;
+    position: relative;
+
+    &-list {
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      overflow: scroll;
+      overflow-x: hidden;
+      width: 40%;
+      background-color: $light-grey;
+
+      & ul {
+        li {
+          position: relative;
+          cursor: pointer;
+          width: 100%;
+          padding: 20px;
+          border-bottom: 1px dotted $dark-grey;
+          transition: all 0.3s;
+          box-sizing: border-box;
+
+          .arrow {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: left 0.3s ease-in-out;
+            margin-right: 5px;
+          }
+
+          &:after {
+            display: none;
+            content: "";
+            height: 100%;
+            width: 3px;
+            background-color: $block-dark;
+            position: absolute;
+            left: 0;
+            top:0;
+          }
+
+          &:hover {
+            padding: 20px 10px 20px 30px;
+            .arrow {
+              left: 10px;
+            }
+          }
+
+          &.completed:after {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &-stats {
+      height: 100%;
+      width: 60%;
+      margin-left: 40%;
+      background-color: $dark-grey;
+    }
+
+  }
+
+
+/*-------------------------HOVER-SWEEP-TO-LEFT--*/
+
+.hvr-sweep-to-left {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+.hvr-sweep-to-left:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $dark-grey;
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.hvr-sweep-to-left.active:before {
+  transform: scaleX(1);
 }

@@ -100,7 +100,11 @@
     "verbose": true,
     "collectCoverage": true,
     "coverageDirectory": "app/coverage",
-    "collectCoverageFrom" : ["app/core/**/*.js", "app/modules/**/*.js", "!app/**/index.js"],
+    "collectCoverageFrom": [
+      "app/core/**/*.js",
+      "app/modules/**/*.js",
+      "!app/**/index.js"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
@@ -172,6 +176,7 @@
     "jest": "^20.0.4",
     "jsdom": "^11.0.0",
     "minimist": "^1.2.0",
+    "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "react-addons-test-utils": "^15.6.0",
     "react-test-renderer": "^15.6.1",
@@ -185,6 +190,7 @@
     "stylelint": "^7.12.0",
     "stylelint-config-standard": "^16.0.0",
     "url-loader": "^0.5.8",
+    "uuid": "^3.1.0",
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.5.0",

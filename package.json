@@ -97,6 +97,7 @@
   ],
   "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
   "jest": {
+    "verbose": true,
     "collectCoverage": true,
     "coverageDirectory": "app/coverage",
     "collectCoverageFrom" : ["app/core/**/*.js", "app/modules/**/*.js", "!app/**/index.js"],

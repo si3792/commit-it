@@ -46,7 +46,6 @@ describe('Month', () => {
     });
     it('should calculate offset correctly (4)', () => {
       const month = new Month(2010, 1);
-      console.log(utils.getMonthByOffset(month, -25));
       expect(utils.getMonthByOffset(month, -25)).toEqual(new Month(2008, 0));
     });
   });
